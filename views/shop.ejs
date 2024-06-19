@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo de Compras</title>
+</head>
+<body>
+  <h1>Módulo de Compras</h1>
+  <form action="/shop" method="post">
+    <div>
+      <label for="product">Producto:</label>
+      <select id="product" name="product">
+        <% products.forEach(product => { %>
+          <option value="<%= product.id %>"><%= product.name %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div>
+      <label for="quantity">Cantidad:</label>
+      <input type="number" id="quantity" name="quantity" required>
+    </div>
+    <div>
+      <button type="submit">Agregar al Carrito</button>
+    </div>
+  </form>
+  <h2>Carrito</h2>
+  <ul>
+    <% cart.forEach(item => { %>
+      <li><%= item.product.name %> - Cantidad: <%= item.quantity %></li>
+    <% }) %>
+  </ul>
+  <form action="/checkout" method="post">
+    <button type="submit">Finalizar Compra</button>
+  </form>
+  <a href="/welcome">Volver</a>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!-- views/welcome.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenido <%= user.username %></title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Enlace al CSS general -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .header {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .user-info {
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .options {
+      margin-top: 20px;
+    }
+
+    .options ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .options li {
+      margin-bottom: 10px;
+    }
+
+    .options a {
+      display: block;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .options a:hover {
+      background-color: #0056b3;
+    }
+
+    .logout {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .logout a {
+      color: #dc3545;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .logout a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Bienvenido, <%= user.username %></h1>
+    </header>
+
+    <div class="user-info">
+      <p>Rol: <%= user.role %></p>
+    </div>
+
+    <div class="options">
+      <% if (user.role === 'admin') { %>
+        <ul>
+          <li><a href="/products">Gestión de Productos</a></li>
+          <li><a href="/sales">Visualización de Ventas</a></li>
+        </ul>
+      <% } else { %>
+        <ul>
+          <li><a href="/shop">Módulo de Compras</a></li>
+          <li><a href="/invoices">Historial de Compras</a></li>
+        </ul>
+      <% } %>
+    </div>
+
+    <div class="logout">
+      <a href="/logout">Cerrar Sesión</a>
+    </div>
+  </div>
+</body>
+</html>

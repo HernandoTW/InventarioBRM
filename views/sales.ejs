@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualización de Ventas</title>
+</head>
+<body>
+  <h1>Visualización de Ventas</h1>
+  <!-- Aquí se mostrará la lista de ventas realizadas por los clientes -->
+  <ul>
+    <% sales.forEach(sale => { %>
+      <li>
+        Cliente: <%= sale.client %>, Fecha: <%= sale.date %>, Total: <%= sale.total %>
+        <ul>
+          <% sale.products.forEach(product => { %>
+            <li><%= product.name %> - Cantidad: <%= product.quantity %>, Precio: <%= product.price %></li>
+          <% }) %>
+        </ul>
+      </li>
+    <% }) %>
+  </ul>
+  <a href="/welcome">Volver</a>
+</body>
+</html>
